@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import json
 import urllib
+import urllib.parse
+import urllib.request
 import math
 
 x_pi = 3.14159265358979324 * 3000.0 / 180.0
@@ -23,8 +25,8 @@ class Geocoding:
                      'key': self.api_key,
                      'city': '全国',
                      'address': address}
-        geocoding = urllib.urlencode(geocoding)
-        ret = urllib.urlopen("%s?%s" % ("http://restapi.amap.com/v3/geocode/geo", geocoding))
+        geocoding = urllib.parse.urlencode(geocoding)
+        ret = urllib.request.urlopen("%s?%s" % ("http://restapi.amap.com/v3/geocode/geo", geocoding))
 
         if ret.getcode() == 200:
             res = ret.read()
@@ -161,15 +163,21 @@ def out_of_china(lng, lat):
 
 
 if __name__ == '__main__':
-    lng = 128.543
-    lat = 37.065
-    result1 = gcj02_to_bd09(lng, lat)
+    # lng = 128.543
+    # lat = 37.065
+    lng = 118.07400059168339
+    lat = 36.845435015941064
+    # result1 = gcj02_to_bd09(lng, lat)
     result2 = bd09_to_gcj02(lng, lat)
-    result3 = wgs84_to_gcj02(lng, lat)
-    result4 = gcj02_to_wgs84(lng, lat)
+    # result3 = wgs84_to_gcj02(lng, lat)
+    # result4 = gcj02_to_wgs84(lng, lat)
     result5 = bd09_to_wgs84(lng, lat)
-    result6 = wgs84_to_bd09(lng, lat)
+    # result6 = wgs84_to_bd09(lng, lat)
 
-    g = Geocoding('API_KEY')  # 这里填写你的高德api的key
-    result7 = g.geocode('北京市朝阳区朝阳公园')
-    print(result1, result2, result3, result4, result5, result6, result7)
+    # g = Geocoding('API_KEY')  # 这里填写你的高德api的key
+    # result7 = g.geocode('北京市朝阳区朝阳公园')
+    # print(result1, result2, result3, result4, result5, result6, result7)
+
+    # print(result1, result2, result3, result4, result5, result6)
+    print('bd09_to_gcj02 bd09_to_wgs84')
+    print(result2, result5)
