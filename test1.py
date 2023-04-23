@@ -22,7 +22,7 @@ map=(117.984285,36.838225),(117.9901716,36.8352266),(117.9894317,36.8289983),(11
 for coord in map:
     # print(coord)
     result = util.gcj02_to_bd09(coord[0], coord[1])
-    print(result[0],'\t',result[1])
+    print(result[0],result[1])
 
 
 # print(len(map))
