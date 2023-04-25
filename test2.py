@@ -8,9 +8,10 @@ import coordTransform_utils as util
 
 excel_path=r'C:\Users\sun\Downloads\坐标-测试.xlsx'
 
-df = pd.read_excel(excel_path,
-                   usecols=['经营店铺名称','唯一编码', '地理经度', '地理纬度','lng','lat'],
-                   converters={'唯一编码':str},)
+# df = pd.read_excel(excel_path,
+#                    usecols=['经营店铺名称','唯一编码', '地理经度', '地理纬度','lng','lat'],
+#                    converters={'唯一编码':str},)
+df = pd.read_excel(excel_path,converters={'唯一编码':str})
 
 line_count=df.shape[0]
 # print(df.head())
