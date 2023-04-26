@@ -20,7 +20,8 @@ filenames=['1-599.xlsx',
            '2400-2999.xlsx',
            '3000-3599.xlsx',
            '3600-4229.xlsx',
-           '唯一编码20148-21196.xlsx']
+        #    '唯一编码20148-21196.xlsx',
+           ]
 
 
 # df = pd.read_excel(excel_path,
@@ -34,13 +35,10 @@ filenames=['1-599.xlsx',
 # line_count=df.shape[0]
 # print(df.head())
 
-csv_file_path = f'{excel_dir}\\all_coord.csv'
-with open(csv_file_path, 'w') as f:
-    f.truncate(0)
-    # print('文件已清空')
+
+data=[]
 
 for index, file_name in enumerate(filenames):
-    data=[]
     file_path=f'{excel_dir}\\{file_name}'
     # print(filepath)
 
@@ -58,23 +56,27 @@ for index, file_name in enumerate(filenames):
             lat=row['地理纬度']
 
             if not pd.isna(id) and not pd.isna(lng) and not pd.isna(lat):
-                data.append([f'{id},{lng},{lat},{name}-{region}-{addr}'])
+                # data.append([f'{id},{lng},{lat},{name}-{region}-{addr}'])
+                data.append([f'{id},{lng},{lat}'])
 
         print(file_name,len(data))
 
-        with open(csv_file_path, 'a', newline='',encoding='utf-8') as file:
-            writer = csv.writer(file)
-            writer.writerows(data)
+        # with open(csv_file_path, 'a', newline='',encoding='utf-8') as file:
+        #     writer = csv.writer(file)
+        #     writer.writerows(data)
             # pass
 
     else:
         print('文件不存在')
 
+print('总行数:',len(data))
 # df.to_excel(excel_path, index=False)
-
-
-# with open(r'C:\Users\sun\Downloads\1200-1799.csv', 'w', newline='') as file:
-#     writer = csv.writer(file)
-#     writer.writerows(data)
-#     # pass
+csv_file_path = f'{excel_dir}\\all_coord.csv'
+# with open(csv_file_path, 'w') as f:
+#     f.truncate(0)
+#     # print('文件已清空')
+with open(csv_file_path, 'w', newline='',encoding='utf-8') as file:
+    writer = csv.writer(file)
+    writer.writerows(data)
+    pass
 
