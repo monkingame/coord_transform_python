@@ -13,7 +13,14 @@ import os
 # excel_path=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230425-数据\20230425-坐标分别整理\2-整理\1200-1799-百度坐标系-2.xlsx'
 
 excel_dir=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230426-数据\坐标-整理'
-filenames=['1-599.xlsx','600-1199.xlsx','1200-1799.xlsx','1800-2399.xlsx','2400-2999.xlsx','3000-3599.xlsx','3600-4229.xlsx','唯一编码20148-21196.xlsx']
+filenames=['1-599.xlsx',
+           '600-1199.xlsx',
+           '1200-1799.xlsx',
+           '1800-2399.xlsx',
+           '2400-2999.xlsx',
+           '3000-3599.xlsx',
+           '3600-4229.xlsx',
+           '唯一编码20148-21196.xlsx']
 
 
 # df = pd.read_excel(excel_path,
@@ -28,9 +35,9 @@ filenames=['1-599.xlsx','600-1199.xlsx','1200-1799.xlsx','1800-2399.xlsx','2400-
 # print(df.head())
 
 
-for index, item in enumerate(filenames):
+for index, file_name in enumerate(filenames):
     data=[]
-    file_path=f'{excel_dir}\\{item}'
+    file_path=f'{excel_dir}\\{file_name}'
     # print(filepath)
 
     if os.path.isfile(file_path):
@@ -46,11 +53,15 @@ for index, item in enumerate(filenames):
             if not pd.isna(id) and not pd.isna(lng) and not pd.isna(lat):
                 data.append([f'{id},{lng},{lat}'])
 
-        print(len(data))
+        print(file_name,len(data))
+
+        with open(f'{excel_dir}\\all_coord.csv', 'a', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerows(data)
+            # pass
 
     else:
-        # print('文件不存在')
-        pass
+        print('文件不存在')
 
 # df.to_excel(excel_path, index=False)
 
