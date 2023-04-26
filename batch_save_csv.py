@@ -34,6 +34,10 @@ filenames=['1-599.xlsx',
 # line_count=df.shape[0]
 # print(df.head())
 
+csv_file_path = f'{excel_dir}\\all_coord.csv'
+with open(csv_file_path, 'w') as f:
+    f.truncate(0)
+    # print('文件已清空')
 
 for index, file_name in enumerate(filenames):
     data=[]
@@ -43,19 +47,22 @@ for index, file_name in enumerate(filenames):
     if os.path.isfile(file_path):
         # print('Yes!文件存在')
         df = pd.read_excel(file_path,converters={'唯一编码':str})
+        df = df.fillna('')
 
         for index,row in df.iterrows():
-            name=row['经营店铺名称']
+            name=row['经营店铺名称'].replace(',','')
+            region=row['区县'].replace(',','')
+            addr=row['详细地址'].replace(',','')
             id=row['唯一编码']
             lng=row['地理经度']
             lat=row['地理纬度']
 
             if not pd.isna(id) and not pd.isna(lng) and not pd.isna(lat):
-                data.append([f'{id},{lng},{lat}'])
+                data.append([f'{id},{lng},{lat},{name}-{region}-{addr}'])
 
         print(file_name,len(data))
 
-        with open(f'{excel_dir}\\all_coord.csv', 'a', newline='') as file:
+        with open(csv_file_path, 'a', newline='',encoding='utf-8') as file:
             writer = csv.writer(file)
             writer.writerows(data)
             # pass
