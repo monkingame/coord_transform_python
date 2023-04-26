@@ -7,48 +7,53 @@ import pandas as pd
 import coordTransform_utils as util
 # import openpyxl
 import csv
+import os
 
 # excel_path=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230425-数据\20230425-坐标分别整理\2-整理\1-599-百度坐标系.xlsx'
-excel_path=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230425-数据\20230425-坐标分别整理\2-整理\1200-1799-百度坐标系-2.xlsx'
+# excel_path=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230425-数据\20230425-坐标分别整理\2-整理\1200-1799-百度坐标系-2.xlsx'
 
 excel_dir=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230426-数据\坐标-整理'
+filenames=['1-599.xlsx','600-1199.xlsx','1200-1799.xlsx','1800-2399.xlsx','2400-2999.xlsx','3000-3599.xlsx','3600-4229.xlsx','唯一编码20148-21196.xlsx']
 
 
 # df = pd.read_excel(excel_path,
 #                    usecols=['经营店铺名称','唯一编码', '地理经度', '地理纬度','lng','lat'],
 #                    converters={'唯一编码':str},)
-df = pd.read_excel(excel_path,converters={'唯一编码':str})
 
 # wb = openpyxl.load_workbook(excel_path)
 # ws = wb.active
 
-line_count=df.shape[0]
+
+# line_count=df.shape[0]
 # print(df.head())
 
-data=[]
 
+for index, item in enumerate(filenames):
+    data=[]
+    file_path=f'{excel_dir}\\{item}'
+    # print(filepath)
 
-for index,row in df.iterrows():
-    name=row['经营店铺名称']
-    id=row['唯一编码']
-    lng=row['地理经度']
-    lat=row['地理纬度']
-    lng_save=row['lng']
-    lat_save=row['lat']
+    if os.path.isfile(file_path):
+        # print('Yes!文件存在')
+        df = pd.read_excel(file_path,converters={'唯一编码':str})
 
-    if not pd.isna(id) and not pd.isna(lng) and not pd.isna(lat):
-        # print(index, id,name,lng,lat)
-        gcj=util.bd09_to_gcj02(lng,lat)
-        # print(index, id,name,baidu[0],baidu[1])
-        df.at[index, 'lng'] = gcj[0]
-        df.at[index, 'lat'] = gcj[1]
-        # if index<100:
-        #     print(id,name,gcj[0],gcj[1],lng,lat)
-        data.append([f'{id},{gcj[0]},{gcj[1]}'])
+        for index,row in df.iterrows():
+            name=row['经营店铺名称']
+            id=row['唯一编码']
+            lng=row['地理经度']
+            lat=row['地理纬度']
+
+            if not pd.isna(id) and not pd.isna(lng) and not pd.isna(lat):
+                data.append([f'{id},{lng},{lat}'])
+
+        print(len(data))
+
+    else:
+        # print('文件不存在')
+        pass
 
 # df.to_excel(excel_path, index=False)
 
-print(len(data))
 
 # with open(r'C:\Users\sun\Downloads\1200-1799.csv', 'w', newline='') as file:
 #     writer = csv.writer(file)
