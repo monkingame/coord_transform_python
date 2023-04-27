@@ -16,17 +16,21 @@ data=[]
 
 for index,row in df.iterrows():
     id=row['唯一编码']
-    name=row['经营店铺名称']
+    name=row['经营店铺名称'].replace(',','').strip()
     lng=row['地理经度']
     lat=row['地理纬度']
 
     if not pd.isna(id) and not pd.isna(lng) and not pd.isna(lat):
-        data.append([f'{id},{name},{lng},{lat}'])
+        # data.append([f'{id},{name},{lng},{lat}'])
+        data.append([id,name,lng,lat])
 
 print(len(data))
 
-with open(r'C:\Users\sun\Downloads\id_name_coord.csv', 'w', newline='') as file:
+# print(data)
+
+with open(r'C:\Users\sun\Downloads\id_name_coord.csv', 'w', newline='',encoding='utf-8') as file:
+    # writer = csv.writer(file,
+    #                     quoting=csv.QUOTE_NONE,delimiter='|', quotechar='"')
     writer = csv.writer(file)
     writer.writerows(data)
-    # pass
 
