@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# 读取excel坐标列
-# 以整理后的文件格式为准，即地理经度、地理维度排序（之前是维度、经度）
+# 将目录下一些列数据总表excel文件，导出为csv文件
+# 这些文件是手工整理的地理坐标
 
 import pandas as pd
 import coordTransform_utils as util

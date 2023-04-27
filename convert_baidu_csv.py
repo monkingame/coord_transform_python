@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# 读取excel坐标列
-# 以整理后的文件格式为准，即地理经度、地理维度排序（之前是维度、经度）
+# 将数据总表excel文件中的百度坐标系地理数据转换为国标gcj02，
+# 并保存为csv文件，便于处理
 
 import pandas as pd
 import coordTransform_utils as util
