@@ -13,13 +13,13 @@ df = pd.read_excel(excel_path)
 # data=[]
 
 for index,row in df.iterrows():
-    name=['餐饮单位名称']
-    addr=['地址']
-    manager=['负责人']
-    tel=['电话']
-    region=['所在区县']
+    name=row['餐饮单位名称']
+    addr=row['地址']
+    manager=row['负责人']
+    tel=row['电话']
+    region=row['所在区县']
 
-    # print(name,addr,manager,tel,region)
+    print(name,addr,manager,tel,region)
 
 # print(len(data))
 
