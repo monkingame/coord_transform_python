@@ -27,6 +27,8 @@ for index,row in df_reader.iterrows():
     df_writer.at[index, '店铺联系人'] = manager
     df_writer.at[index, '店铺联系方式（手机号）'] = tel
     df_writer.at[index, '区县'] = region
+    df_writer.at[index, '行业类型（必吃烧烤、鲁菜鲁味、酒店住宿、景点游玩、淄博好品、苍蝇小馆、博山菜、十大人气榜单）'] = '必吃烧烤'
+    df_writer.at[index, '数据版本'] = '428'
 
 
 # print(len(data))
