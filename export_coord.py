@@ -28,7 +28,7 @@ print(len(data))
 
 # print(data)
 
-with open(r'C:\Users\sun\Downloads\id_name_coord.csv', 'w', newline='',encoding='utf-8') as file:
+with open(r'C:\Users\sun\Downloads\id_name_coord_gcj02.csv', 'w', newline='',encoding='utf-8') as file:
     # writer = csv.writer(file,
     #                     quoting=csv.QUOTE_NONE,delimiter='|', quotechar='"')
     writer = csv.writer(file)
