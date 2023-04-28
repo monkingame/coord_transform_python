@@ -10,7 +10,8 @@ excel_path=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230428-数
 df = pd.read_excel(excel_path,converters={'唯一编码':str})
 df = df.fillna('')
 
-data=[]
+# data=[]
+dict={}
 
 for index,row in df.iterrows():
     id=row['唯一编码']
@@ -18,12 +19,18 @@ for index,row in df.iterrows():
     region=row['区县'].replace(',','').strip()
     addr=row['详细地址'].replace(',','').strip()
     
-    # if not pd.isna(id) and not pd.isna(lng) and not pd.isna(lat):
-    #     # data.append([f'{id} {name} {region} {addr}'])
-    #     data.append([f'{id} {name} {region} {addr}'])
-    if not pd.isna(id) and not pd.isna(id):
-        data.append([f'{id} {name} {region} {addr}'])
+    if not pd.isna(id) :
+        # data.append([f'{id} {name} {region} {addr}'])
+        dict[id]=name
 
-print(len(data))
+print(len(dict))
+# print(dict)
 
+result=[]
+
+for key, value in dict.items():
+    if value == '博焱烧烤':
+        result.append((key, value))
+
+print(result)
 
