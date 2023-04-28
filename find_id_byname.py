@@ -62,14 +62,19 @@ for file in files:
     full_path = os.path.join(image_path, file)
     # print(full_path)
     if os.path.isfile(full_path):
-        file_name = os.path.basename(full_path)
-        file_name_no_ext = os.path.splitext(file_name)[0]
+        file_name_with_ext = os.path.basename(full_path)
+        file_name_no_ext = os.path.splitext(file_name_with_ext)[0]
         extension = os.path.splitext(full_path)[1]
         # print(full_path)
         # print(file_name,file_name_no_ext,extension)
         # pass
         correspond_id=find_key_by_value(dict,file_name_no_ext)
         if correspond_id is not None :
-            print(correspond_id)
+            # print(correspond_id)
+            # os.rename(old_file_name, new_file_name)
+            new_path = os.path.join(image_path, correspond_id + extension)
+            # pass
+            # print(new_path)
+            os.rename(full_path, new_path)
 
 
