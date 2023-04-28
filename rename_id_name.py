@@ -19,7 +19,6 @@ def find_key_by_value(my_dict, value):
 
 
 excel_path=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230428-数据\20230428-淄博本地生活数据-5.xlsx'
-
 df = pd.read_excel(excel_path,converters={'唯一编码':str})
 df = df.fillna('')
 
@@ -35,23 +34,6 @@ for index,row in df.iterrows():
         # data.append([f'{id} {name} {region} {addr}'])
         dict[id]=name
 
-# print(len(dict))
-# print(dict)
-
-# cn_names=['万和小院','东华园烧烤城','临沂王小二胡同炒鸡','乡野农家','假一赔十鲜肉烧烤','博源人家','博焱烧烤','天禧烧烤','小三峡','小四川','小胖烧烤','左邻右舍','探客烧烤','林都烧烤','深圳菜馆','清桐居','砂锅居','聚万家博山菜','花沟烧烤','金树私房菜','闫大厨','鲁一锅老北京羊蝎子羊肉馆']
-
-
-# result=[]
-# for key, value in dict.items():
-#     # if value == '博焱烧烤':
-#     #     result.append((key, value))
-#     if value in cn_names:
-#         # print(key,value)
-#         pass
-
-# print(result)
-# print(cn_names)
-# print(find_key_by_value(dict,'博焱烧烤1'))
 
 image_path=r'C:\Users\sun\Downloads\428-update'
 files = os.listdir(image_path)
