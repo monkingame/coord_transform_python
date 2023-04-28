@@ -23,7 +23,6 @@ excel_path=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230428-数
 df = pd.read_excel(excel_path,converters={'唯一编码':str})
 df = df.fillna('')
 
-# data=[]
 dict={}
 
 for index,row in df.iterrows():
