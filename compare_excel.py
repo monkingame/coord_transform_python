@@ -123,7 +123,13 @@ def find_equals_row(row_left, row_right):
     result=same_column(row_left['删除标志'],row_right['删除标志'])
     if result is not None: return result
 
-    result=same_column(row_left['数据版本'],row_right['数据版本'])
+    # result=same_column(row_left['数据版本'],row_right['数据版本'])
+    # if result is not None: return result
+
+    # result=same_column(row_left['一店一码'],row_right['一店一码'])
+    # if result is not None: return result
+
+    result=same_column(row_left['数据来源'],row_right['数据来源'])
     if result is not None: return result
 
     # if not same_column(id_l,id_r):return False
@@ -190,7 +196,7 @@ for key in map_left.keys():
     # print(same)
     if  is_same is not None:
         # print(key,v_left['经营店铺名称'])
-        print(key,is_same)
+        print(key,v_left['经营店铺名称'],is_same)
         count = count+1
 
 print(count)
