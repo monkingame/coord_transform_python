@@ -98,7 +98,33 @@ def find_equals_row(row_left, row_right):
 
     result=same_column(row_left['详细地址'],row_right['详细地址'])
     if result is not None: return result
-    
+
+    result=same_column(row_left['lat'],row_right['lat'])
+    if result is not None: return result
+
+    result=same_column(row_left['lng'],row_right['lng'])
+    if result is not None: return result
+
+    result=same_column(row_left['子类'],row_right['子类'])
+    if result is not None: return result
+
+    result=same_column(row_left['简介'],row_right['简介'])
+    if result is not None: return result
+
+    result=same_column(row_left['特色'],row_right['特色'])
+    if result is not None: return result
+
+    result=same_column(row_left['营业时间'],row_right['营业时间'])
+    if result is not None: return result
+
+    result=same_column(row_left['外部链接'],row_right['外部链接'])
+    if result is not None: return result
+
+    result=same_column(row_left['删除标志'],row_right['删除标志'])
+    if result is not None: return result
+
+    result=same_column(row_left['数据版本'],row_right['数据版本'])
+    if result is not None: return result
 
     # if not same_column(id_l,id_r):return False
     # if not same_column(row_left['经营店铺名称'],row_right['经营店铺名称']):return False
