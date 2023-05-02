@@ -5,31 +5,55 @@
 import pandas as pd
 import coordTransform_utils as util
 
-excel_path=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-7.xlsx'
 
-df = pd.read_excel(excel_path,converters={'唯一编码':str,'数据版本':str})
+###############################################################################
 
-# data=[]
+# excel_path=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-7.xlsx'
+# df_table = pd.read_excel(excel_path,converters={'唯一编码':str,'数据版本':str})
 
-count=0
-
-for index,row in df.iterrows():
-    name=row['经营店铺名称']
-    id=row['唯一编码']
-    uniqueid=row['lat']
-    stamp=row['数据版本']
-    # print(index)
-
-    if not pd.isna(id) and not pd.isna(uniqueid):
-        if stamp == '429':
-            count=count+1
-            print(count)
-        # data.append([f'{id},{lng},{lat}'])
-        # print(id,name,uniqueid)
-        # print(stamp)
-        # print(count)
-        # print(stamp=='501')
-
+# for index,row in df.iterrows():
+#     name=row['经营店铺名称']
+#     id=row['唯一编码']
+#     uniqueid=row['lat']
+#     stamp=row['数据版本']
+#     # print(index)
+#     if not pd.isna(id) and not pd.isna(uniqueid):
+#         if stamp == '429':
+#             # count=count+1
+#             # print(count)
+#             # print
+#             df.at[index, '数据来源'] = '问卷星'
+#             df.at[index, '一店一码'] = uniqueid
 # df.to_excel(excel_path, index=False)
 
-# print(len(data))
+###############################################################################
+
+all_wenjuanxing=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-1430-问卷星全纪录.xlsx'
+df_wenjuan = pd.read_excel(all_wenjuanxing,converters={r'1、“一店一码”商户编码':str,
+                                                       r'7、法定代表人身份证号':str})
+
+dict={}
+for index,row in df_wenjuan.iterrows():
+    code=row[r'1、“一店一码”商户编码']
+    idNo=row[r'7、法定代表人身份证号']
+    # print(index)
+    if not pd.isna(code) and not pd.isna(idNo):
+        # df_wenjuan.at[index, '数据来源'] = '问卷星'
+        # df_wenjuan.at[index, '一店一码'] = uniqueid
+        # print(code,idNo)
+        dict[idNo]=code
+# df_wenjuan.to_excel(excel_path, index=False)
+
+
+path_xuquan=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-问卷星-许权-0430.xlsx'
+df_xuquan = pd.read_excel(path_xuquan,converters={'lat':str})
+
+for index,row in df_xuquan.iterrows():
+    code=row['lat'] # 可能有身份证
+    new_code=dict.get(code)
+    if  new_code is not None:
+        # print(new_code)
+        df_xuquan.at[index, 'lat'] = new_code
+
+df_xuquan.to_excel(path_xuquan, index=False)
+
