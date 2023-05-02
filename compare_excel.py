@@ -14,9 +14,29 @@ df_right = pd.read_excel(path_right,converters={'唯一编码':str})
 
 
 
-def find_equals(value_left, value_right):
-    return value_left['经营店铺名称']
+def find_equals_row(pd,row_left, row_right):
+    vl=row_left['经营店铺名称']
+    vr=row_right['经营店铺名称']
 
+    if same_column(pd,row_left['经营店铺名称'],row_right['经营店铺名称']):
+        return True
+
+    if same_column(pd,row_left['经营店铺名称'],row_right['经营店铺名称']):
+        return True
+    
+    if(row_left['经营店铺名称'] != row_right['经营店铺名称']) :
+        print(row_left['经营店铺名称'],row_right['经营店铺名称'])
+        return False
+    if(row_left['法人名称'] != row_right['法人名称']) :
+        # print(row_left['法人名称'],row_right['法人名称'])
+        return False
+    return True
+
+
+def same_column(pd,v_left,v_right):
+    if pd.isnan(v_left) and pd.isnan(v_right):
+        return True
+    return v_left==v_right
 
 # count=0
 
@@ -39,16 +59,19 @@ for index,row in df_right.iterrows():
     if not pd.isna(id):
         map_right[id]=row
 
-print(len(map_left),len(map_right))
+# print(len(map_left),len(map_right))
 
 count=0
 for key in map_left.keys():
     # print(find_equals(map_left[key],map_right[key]))
+    v_left=map_left.get(key)
+    v_right=map_right.get(key)
+    same=find_equals_row(v_left,v_right)
+    # print(same)
+    if not same:
+        # print(key,v_left['经营店铺名称'])
+        count = count+1
 
-    if not map_left[key].equals(map_right[key]):
-        # print(f"键值对 {key} 不相同")
-        count=count+1
-        # print(map_left[key])
-        # pass
 
-# print(count)
+print(count)
+
