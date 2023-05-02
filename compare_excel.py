@@ -63,8 +63,42 @@ def find_equals_row(row_left, row_right):
     result=same_column(row_left['区县'],row_right['区县'])
     if result is not None: return result
 
+    # result=same_column(row_left['详细地址'],row_right['详细地址'])
+    # if result is not None: return result
+
+    # result=same_column(row_left['地理纬度'],row_right['地理纬度'])
+    # if result is not None: return result
+
+    result=same_column(row_left['是否是人气商家'],row_right['是否是人气商家'])
+    if result is not None: return result
+
+    result=same_column(row_left['是否在推荐榜单'],row_right['是否在推荐榜单'])
+    if result is not None: return result
+
+    result=same_column(row_left['评分（满分5分）'],row_right['评分（满分5分）'])
+    if result is not None: return result
+
+    result=same_column(row_left['唯一编码'],row_right['唯一编码'])
+    if result is not None: return result
+
+    result=same_column(row_left['店铺LOGO'],row_right['店铺LOGO'])
+    if result is not None: return result
+
+    result=same_column(row_left['门头照片'],row_right['门头照片'])
+    if result is not None: return result
+
+    result=same_column(row_left['经营场所内照片'],row_right['经营场所内照片'])
+    if result is not None: return result
+
     result=same_column(row_left['详细地址'],row_right['详细地址'])
     if result is not None: return result
+
+    result=same_column(row_left['经营店铺名称-原始备份'],row_right['经营店铺名称-原始备份'])
+    if result is not None: return result
+
+    result=same_column(row_left['详细地址'],row_right['详细地址'])
+    if result is not None: return result
+    
 
     # if not same_column(id_l,id_r):return False
     # if not same_column(row_left['经营店铺名称'],row_right['经营店铺名称']):return False
@@ -130,7 +164,7 @@ for key in map_left.keys():
     # print(same)
     if  is_same is not None:
         # print(key,v_left['经营店铺名称'])
-        print(is_same)
+        print(key,is_same)
         count = count+1
 
 print(count)
