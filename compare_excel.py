@@ -6,8 +6,12 @@ import pandas as pd
 import coordTransform_utils as util
 
 
-path_left=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-6.xlsx'
-path_right=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-8.xlsx'
+# path_left=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-6.xlsx'
+# path_right=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-8.xlsx'
+
+path_left=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-8.xlsx'
+path_right=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-9.xlsx'
+
 
 df_left = pd.read_excel(path_left,converters={'唯一编码':str})
 df_right = pd.read_excel(path_right,converters={'唯一编码':str})
@@ -140,15 +144,14 @@ def find_equals_row(row_left, row_right):
     result=same_column(row_left['删除标志'],row_right['删除标志'])
     if result is not None: return ('删除标志', *result)
 
-    # result=same_column(row_left['数据版本'],row_right['数据版本'])
-    # if result is not None: return result
+    result=same_column(row_left['数据版本'],row_right['数据版本'])
+    if result is not None: return result
 
-    # result=same_column(row_left['一店一码'],row_right['一店一码'])
-    # if result is not None: return result
+    result=same_column(row_left['一店一码'],row_right['一店一码'])
+    if result is not None: return result
 
-    # result=same_column(row_left['数据来源'],row_right['数据来源'])
-    # if result is not None: return result
-
+    result=same_column(row_left['数据来源'],row_right['数据来源'])
+    if result is not None: return result
     
     return None
 
@@ -162,8 +165,6 @@ def same_column(v_l,v_r):
         return None
     else:
         return (v_l,v_r)
-
-# count=0
 
 map_left={}
 map_right={}
@@ -184,7 +185,7 @@ for index,row in df_right.iterrows():
     if not pd.isna(id):
         map_right[id]=row
 
-# print(len(map_left),len(map_right))
+print(len(map_left),len(map_right))
 
 count=0
 for key in map_left.keys():
