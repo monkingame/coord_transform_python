@@ -15,7 +15,6 @@ def same_column(v_l,v_r):
 
 
 
-
 def find_equals_row(row_left, row_right):
     id_l=row_left['唯一编码']
     id_r=row_right['唯一编码']
@@ -79,7 +78,6 @@ def find_equals_row(row_left, row_right):
 
     result=same_column(row_left['地理经度'],row_right['地理经度'])
     if result is not None:
-        # print(abs(result[0]-result[1]))
         if abs(result[0]-result[1]) < 1e-8:
             return None
         else:
