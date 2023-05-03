@@ -30,12 +30,22 @@ def get_symmetric_difference_dict(dict1, dict2):
 #     return diff_dict
 
 # 差集
-def get_difference_keys(dict_big, set_keys_small):
-    # return set(dict_big.keys()).difference(set(set_keys_small.keys()))
+def get_difference_keys(dict_big, set_small_keys):
+    # 返回字典 dict_big 中存在，但是字典 set_small_keys 中不存在的键-值对构成的字典
     # 转换为集合再取差集
-    diff_keys = set(dict_big.keys()) - set_keys_small
+    diff_keys = set(dict_big.keys()) - set_small_keys
     # 返回新字典
     return {k: dict_big[k] for k in diff_keys}
+
+
+# 通过键表过滤字典
+def filter_dict_by_keys(dict, set_keys):
+    return {k: v for k, v in dict.items() if k in set_keys}
+
+# 判断两个字典的keys是否完全相等
+def is_dict_keys_equal(dict1, dict2):
+    return set(dict1.keys()) == set(dict2.keys())
+
 
 # # 只取回存在于set中的key
 # def get_set_difference_keys(dict_big, set_keys_small):
@@ -45,16 +55,16 @@ def get_difference_keys(dict_big, set_keys_small):
 #     # 返回新字典
 #     return {k: dict_big[k] for k in diff_keys}
 
-# 作废
-# 使用 dict_symmetric_difference
-def get_unique_dict(a, b):
-    unique_dict = {}
-    for key in a:
-        if key not in b:
-            unique_dict[key] = a[key]
-    for key in b:
-        if key not in a and key not in unique_dict:
-            unique_dict[key] = b[key]
-    return unique_dict
+# # 作废
+# # 使用 dict_symmetric_difference
+# def get_unique_dict(a, b):
+#     unique_dict = {}
+#     for key in a:
+#         if key not in b:
+#             unique_dict[key] = a[key]
+#     for key in b:
+#         if key not in a and key not in unique_dict:
+#             unique_dict[key] = b[key]
+#     return unique_dict
 
 
