@@ -44,15 +44,8 @@ keys_intersection=dop.get_intersection_keys(map_left,map_right)
 # 相同keys部分
 remain_left=dop.filter_dict_by_keys(map_left,keys_intersection)
 remain_right=dop.filter_dict_by_keys(map_right,keys_intersection)
-print('相同数量：',len(remain_left),len(remain_right))
+print('经筛选唯一编码相同数量：',len(remain_left),len(remain_right))
 # print(dop.is_dict_keys_equal(remain_left,remain_right))
-
-
-# 分别不同的部分
-diff_left=dop.get_difference(map_left,keys_intersection)
-diff_right=dop.get_difference(map_right,keys_intersection)
-print('各自多余数量：',len(diff_left),len(diff_right))
-
 
 count=0
 for key in remain_left.keys():
@@ -65,5 +58,24 @@ for key in remain_left.keys():
         # print(key,v_left['经营店铺名称'],compare)
         count = count+1
 
-print('不同数据总量：',count)
+print('唯一编码相同，但该行数据不同的总量：',count)
+
+
+print('=====================================')
+
+# 分别不同的部分
+diff_left=dop.get_difference(map_left,keys_intersection)
+diff_right=dop.get_difference(map_right,keys_intersection)
+print('各自多余数量：',len(diff_left),len(diff_right))
+
+print('前者特有数据')
+for key,value in diff_left.items():
+    # print(key,value['经营店铺名称'])
+    pass
+
+print('后者特有数据')
+for key,value in diff_right.items():
+    # print(key,value['经营店铺名称'])
+    pass
+
 
