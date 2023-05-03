@@ -29,8 +29,9 @@ def get_symmetric_difference_dict(dict1, dict2):
 #     diff_dict = {k: dict_big[k] for k in set(dict_big) - set(dict_small)}
 #     return diff_dict
 
+
 # 差集
-def get_difference_keys(dict_big, set_small_keys):
+def get_difference(dict_big, set_small_keys):
     # 返回字典 dict_big 中存在，但是字典 set_small_keys 中不存在的键-值对构成的字典
     # 转换为集合再取差集
     diff_keys = set(dict_big.keys()) - set_small_keys
