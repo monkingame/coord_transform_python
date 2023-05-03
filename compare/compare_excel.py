@@ -22,11 +22,8 @@ map_right={}
 for index,row in df_left.iterrows():
     id=row['唯一编码']
     # name=row['经营店铺名称']
-    # print(index)
     if not pd.isna(id):
         # if not row.equals(df_right.iloc[index]):
-        #     # print(index)
-        #     count=count+1
         map_left[id]=row
 
 for index,row in df_right.iterrows():
@@ -42,18 +39,16 @@ print('两个表各自数量：',len(map_left),len(map_right))
 keys_intersection=dop.get_intersection_keys(map_left,map_right)
 
 # 相同keys部分
-remain_left=dop.filter_dict_by_keys(map_left,keys_intersection)
-remain_right=dop.filter_dict_by_keys(map_right,keys_intersection)
-print('经筛选唯一编码相同数量：',len(remain_left),len(remain_right))
+intersect_left=dop.filter_dict_by_keys(map_left,keys_intersection)
+intersect_right=dop.filter_dict_by_keys(map_right,keys_intersection)
+print('经筛选唯一编码相同数量：',len(intersect_left),len(intersect_right))
 # print(dop.is_dict_keys_equal(remain_left,remain_right))
 
 count=0
-for key in remain_left.keys():
-    # print(find_equals(map_left[key],map_right[key]))
-    v_left=remain_left.get(key)
-    v_right=map_right.get(key)
+for key in intersect_left.keys():
+    v_left=intersect_left.get(key)
+    v_right=intersect_right.get(key)
     compare=find_equals_row(v_left,v_right)
-    # print(same)
     if  compare is not None:
         # print(key,v_left['经营店铺名称'],compare)
         count = count+1
