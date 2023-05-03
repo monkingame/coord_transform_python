@@ -4,7 +4,7 @@
 
 import pandas as pd
 from find_same_row_column import find_equals_row
-import dict_operation as dict_op
+import dict_operation as dop
 
 # path_left=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-6.xlsx'
 # path_right=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-8.xlsx'
@@ -35,7 +35,14 @@ for index,row in df_right.iterrows():
     if not pd.isna(id):
         map_right[id]=row
 
-print('各自数量',len(map_left),len(map_right))
+print('两个表各自数量：',len(map_left),len(map_right))
+
+# dict_intersection=
+keys_intersection=dop.get_intersection_keys(map_left,map_right)
+print(len(keys_intersection))
+# set_left=dop.get_set_difference_keys(map_left,keys_intersection)
+# set_right=dop.get_set_difference_keys(map_right,keys_intersection)
+# print(len(set_left),len(set_right))
 
 # unique_dict=get_unique_dict(map_left,map_right)
 # # print(len(unique_dict))
@@ -55,5 +62,5 @@ for key in map_left.keys():
         # print(key,v_left['经营店铺名称'],is_same)
         count = count+1
 
-print(count)
+print('不同数据总量：',count)
 
