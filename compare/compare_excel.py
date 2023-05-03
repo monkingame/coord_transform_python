@@ -199,6 +199,12 @@ for index,row in df_right.iterrows():
 
 print(len(map_left),len(map_right))
 
+unique_dict=get_unique_dict(map_left,map_right)
+# print(len(unique_dict))
+for key, value in unique_dict.items():
+    print(key, value['经营店铺名称'])
+
+
 count=0
 for key in map_left.keys():
     # print(find_equals(map_left[key],map_right[key]))
