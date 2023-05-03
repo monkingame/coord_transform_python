@@ -7,9 +7,9 @@ import coordTransform_utils as util
 
 
 path_left=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-6.xlsx'
-df_left = pd.read_excel(path_left,converters={'唯一编码':str})
-
 path_right=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-8.xlsx'
+
+df_left = pd.read_excel(path_left,converters={'唯一编码':str})
 df_right = pd.read_excel(path_right,converters={'唯一编码':str})
 
 
@@ -70,86 +70,68 @@ def find_equals_row(row_left, row_right):
     # if result is not None: return result
 
     result=same_column(row_left['是否是人气商家'],row_right['是否是人气商家'])
-    if result is not None: return result
+    if result is not None: return ('是否是人气商家',*result)
 
     result=same_column(row_left['是否在推荐榜单'],row_right['是否在推荐榜单'])
-    if result is not None: return result
+    if result is not None: return ('是否在推荐榜单', *result)
 
     result=same_column(row_left['评分（满分5分）'],row_right['评分（满分5分）'])
-    if result is not None: return result
+    if result is not None: return ('评分（满分5分）',*result)
 
     result=same_column(row_left['唯一编码'],row_right['唯一编码'])
-    if result is not None: return result
+    if result is not None: return ('唯一编码', *result)
 
     result=same_column(row_left['店铺LOGO'],row_right['店铺LOGO'])
-    if result is not None: return result
+    if result is not None: return ('店铺LOGO', *result)
 
     result=same_column(row_left['门头照片'],row_right['门头照片'])
-    if result is not None: return result
+    if result is not None: return ('门头照片', *result)
 
     result=same_column(row_left['经营场所内照片'],row_right['经营场所内照片'])
-    if result is not None: return result
+    if result is not None: return ('经营场所内照片', *result)
 
     result=same_column(row_left['详细地址'],row_right['详细地址'])
-    if result is not None: return result
+    if result is not None: return ('详细地址', *result)
 
     result=same_column(row_left['经营店铺名称-原始备份'],row_right['经营店铺名称-原始备份'])
-    if result is not None: return result
+    if result is not None: return ('经营店铺名称-原始备份', *result)
 
     result=same_column(row_left['详细地址'],row_right['详细地址'])
-    if result is not None: return result
+    if result is not None: return ('详细地址', *result)
 
     result=same_column(row_left['lat'],row_right['lat'])
-    if result is not None: return result
+    if result is not None: return ('lat', *result)
 
     result=same_column(row_left['lng'],row_right['lng'])
-    if result is not None: return result
+    if result is not None: return ('lng', *result)
 
     result=same_column(row_left['子类'],row_right['子类'])
-    if result is not None: return result
+    if result is not None: return ('子类', *result)
 
     result=same_column(row_left['简介'],row_right['简介'])
-    if result is not None: return result
+    if result is not None: return ('简介', *result)
 
     result=same_column(row_left['特色'],row_right['特色'])
-    if result is not None: return result
+    if result is not None: return ('特色', *result)
 
     result=same_column(row_left['营业时间'],row_right['营业时间'])
-    if result is not None: return result
+    if result is not None: return ('营业时间', *result)
 
     result=same_column(row_left['外部链接'],row_right['外部链接'])
-    if result is not None: return result
+    if result is not None: return ('外部链接', *result)
 
     result=same_column(row_left['删除标志'],row_right['删除标志'])
-    if result is not None: return result
+    if result is not None: return ('删除标志', *result)
 
-    # result=same_column(row_left['数据版本'],row_right['数据版本'])
-    # if result is not None: return result
+    result=same_column(row_left['数据版本'],row_right['数据版本'])
+    if result is not None: return result
 
     # result=same_column(row_left['一店一码'],row_right['一店一码'])
     # if result is not None: return result
 
-    result=same_column(row_left['数据来源'],row_right['数据来源'])
-    if result is not None: return result
+    # result=same_column(row_left['数据来源'],row_right['数据来源'])
+    # if result is not None: return result
 
-    # if not same_column(id_l,id_r):return False
-    # if not same_column(row_left['经营店铺名称'],row_right['经营店铺名称']):return False
-    # if not same_column(row_left['营业执照名称'],row_right['营业执照名称']):return False
-    # if not same_column(row_left['统一社会信用代码'],row_right['统一社会信用代码']):return False
-    # if not same_column(row_left['法人名称'],row_right['法人名称']):return False
-    # if not same_column(row_left['法人手机号'],row_right['法人手机号']):return False
-    # if not same_column(row_left['法人身份证号码'],row_right['法人身份证号码']):return False
-    # if not same_column(row_left['食品经营许可证编码'],row_right['食品经营许可证编码']):return False
-    # if not same_column(row_left['营业类型（例如：个人，个体户，企业）'],row_right['营业类型（例如：个人，个体户，企业）']):return False
-    # if not same_column(row_left['行业类型（必吃烧烤、鲁菜鲁味、酒店住宿、景点游玩、淄博好品、苍蝇小馆、博山菜、十大人气榜单）'],row_right['行业类型（必吃烧烤、鲁菜鲁味、酒店住宿、景点游玩、淄博好品、苍蝇小馆、博山菜、十大人气榜单）']):return False
-    # if not same_column(row_left['店铺联系人'],row_right['店铺联系人']):return False
-    # if not same_column(row_left['联系邮箱'],row_right['联系邮箱']):return False
-    # if not same_column(row_left['店铺联系方式（座机）'],row_right['店铺联系方式（座机）']):return False
-    # if not same_column(row_left['店铺联系方式（手机号）'],row_right['店铺联系方式（手机号）']):return False
-    # if not same_column(row_left['区县'],row_right['区县']):return False
-    # if not same_column(row_left['详细地址'],row_right['详细地址']):return False
-    # if not same_column(row_left['地理经度'],row_right['地理经度']):return False
-    # if not same_column(row_left['地理纬度'],row_right['地理纬度']):return False
     
     return None
 
