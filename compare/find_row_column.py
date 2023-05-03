@@ -1,19 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# 比较两个文件是否一致
-
 import pandas as pd
-
-def get_unique_dict(a, b):
-    unique_dict = {}
-    for key in a:
-        if key not in b:
-            unique_dict[key] = a[key]
-    for key in b:
-        if key not in a and key not in unique_dict:
-            unique_dict[key] = b[key]
-    return unique_dict
-
 
 
 def same_column(v_l,v_r):
@@ -27,15 +14,6 @@ def same_column(v_l,v_r):
         return (v_l,v_r)
 
 
-# path_left=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-6.xlsx'
-# path_right=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-8.xlsx'
-
-path_left=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-8.xlsx'
-path_right=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-9.xlsx'
-
-
-df_left = pd.read_excel(path_left,converters={'唯一编码':str})
-df_right = pd.read_excel(path_right,converters={'唯一编码':str})
 
 
 def find_equals_row(row_left, row_right):
@@ -175,46 +153,4 @@ def find_equals_row(row_left, row_right):
     if result is not None: return result
     
     return None
-
-
-map_left={}
-map_right={}
-
-for index,row in df_left.iterrows():
-    id=row['唯一编码']
-    name=row['经营店铺名称']
-    # print(index)
-    if not pd.isna(id):
-        # if not row.equals(df_right.iloc[index]):
-        #     # print(index)
-        #     count=count+1
-        map_left[id]=row
-
-for index,row in df_right.iterrows():
-    id=row['唯一编码']
-    # name=row['经营店铺名称']
-    if not pd.isna(id):
-        map_right[id]=row
-
-print(len(map_left),len(map_right))
-
-unique_dict=get_unique_dict(map_left,map_right)
-# print(len(unique_dict))
-for key, value in unique_dict.items():
-    print(key, value['经营店铺名称'])
-
-
-count=0
-for key in map_left.keys():
-    # print(find_equals(map_left[key],map_right[key]))
-    v_left=map_left.get(key)
-    v_right=map_right.get(key)
-    is_same=find_equals_row(v_left,v_right)
-    # print(same)
-    if  is_same is not None:
-        # print(key,v_left['经营店铺名称'])
-        print(key,v_left['经营店铺名称'],is_same)
-        count = count+1
-
-print(count)
 
