@@ -44,14 +44,14 @@ keys_intersection=dop.get_intersection_keys(map_left,map_right)
 # 相同keys部分
 remain_left=dop.filter_dict_by_keys(map_left,keys_intersection)
 remain_right=dop.filter_dict_by_keys(map_right,keys_intersection)
-# print(len(remain_left),len(remain_right))
+print('相同数量：',len(remain_left),len(remain_right))
 # print(dop.is_dict_keys_equal(remain_left,remain_right))
 
 
 # 分别不同的部分
 diff_left=dop.get_difference(map_left,keys_intersection)
 diff_right=dop.get_difference(map_right,keys_intersection)
-# print(len(diff_left),len(diff_right))
+print('各自多余数量：',len(diff_left),len(diff_right))
 
 
 count=0
