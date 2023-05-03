@@ -4,9 +4,7 @@
 
 # 交集
 def get_dict_intersection(dict1, dict2):
-    """
-    返回两个字典的交集
-    """
+    # 返回两个字典的交集
     return {k: dict1[k] for k in dict1.keys() & dict2.keys()}
 
 
@@ -19,6 +17,12 @@ def get_symmetric_difference(dict1, dict2):
     diff2 = {k: dict2[k] for k in set(dict2) - set(dict1)}
     return {**diff1, **diff2}
 
+
+# 差集
+def dict_diffefence(dict_parent, dict_child):
+    # 返回字典 dict_parent 中存在，但是字典 dict_child 中不存在的键-值对构成的字典
+    diff_dict = {k: dict_parent[k] for k in set(dict_parent) - set(dict_child)}
+    return diff_dict
 
 
 
