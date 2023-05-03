@@ -5,6 +5,28 @@
 import pandas as pd
 import coordTransform_utils as util
 
+def get_unique_dict(a, b):
+    unique_dict = {}
+    for key in a:
+        if key not in b:
+            unique_dict[key] = a[key]
+    for key in b:
+        if key not in a and key not in unique_dict:
+            unique_dict[key] = b[key]
+    return unique_dict
+
+
+
+def same_column(v_l,v_r):
+    if  pd.isna(v_l) and pd.isna(v_r):
+        return None
+    # return v_l==v_r
+
+    if v_l==v_r:
+        return None
+    else:
+        return (v_l,v_r)
+
 
 # path_left=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-6.xlsx'
 # path_right=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-8.xlsx'
@@ -155,16 +177,6 @@ def find_equals_row(row_left, row_right):
     
     return None
 
-
-def same_column(v_l,v_r):
-    if  pd.isna(v_l) and pd.isna(v_r):
-        return None
-    # return v_l==v_r
-
-    if v_l==v_r:
-        return None
-    else:
-        return (v_l,v_r)
 
 map_left={}
 map_right={}
