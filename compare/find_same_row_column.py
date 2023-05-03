@@ -17,6 +17,7 @@ def same_column(v_l,v_r):
 
 def find_equals_row(row_left, row_right):
     id_l=row_left['唯一编码']
+    # print(row_right)
     id_r=row_right['唯一编码']
 
     result=same_column(id_l,id_r)
@@ -142,13 +143,13 @@ def find_equals_row(row_left, row_right):
     if result is not None: return ('删除标志', *result)
 
     result=same_column(row_left['数据版本'],row_right['数据版本'])
-    if result is not None: return result
+    if result is not None: return ('数据版本', *result)
 
     result=same_column(row_left['一店一码'],row_right['一店一码'])
-    if result is not None: return result
+    if result is not None: return ('一店一码', *result)
 
     result=same_column(row_left['数据来源'],row_right['数据来源'])
-    if result is not None: return result
+    if result is not None: return ('数据来源', *result)
     
     return None
 

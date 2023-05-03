@@ -20,7 +20,7 @@ map_right={}
 
 for index,row in df_left.iterrows():
     id=row['唯一编码']
-    name=row['经营店铺名称']
+    # name=row['经营店铺名称']
     # print(index)
     if not pd.isna(id):
         # if not row.equals(df_right.iloc[index]):
