@@ -8,11 +8,11 @@ from find_same_row_column import find_equals_row
 # path_left=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-6.xlsx'
 # path_right=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-8.xlsx'
 
-path_left=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-8.xlsx'
-path_right=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-6.xlsx'
+path_left=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-6.xlsx'
+path_right=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230502-数据\20230502-淄博本地生活数-8.xlsx'
 
-df_left = pd.read_excel(path_left,converters={'唯一编码':str})
-df_right = pd.read_excel(path_right,converters={'唯一编码':str})
+df_left = pd.read_excel(path_left,converters={'唯一编码':str,'一店一码':str,'数据版本':str})
+df_right = pd.read_excel(path_right,converters={'唯一编码':str,'一店一码':str,'数据版本':str})
 
 
 map_left={}
