@@ -5,7 +5,7 @@
 # 以整理后的文件格式为准，即地理经度、地理维度排序（之前是维度、经度）
 
 import pandas as pd
-import coordTransform_utils as util
+from ..coord import coordTransform_utils as util
 # import openpyxl
 
 excel_path=r'C:\Users\sun\Downloads\坐标-测试.xlsx'

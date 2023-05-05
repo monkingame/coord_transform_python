@@ -3,7 +3,7 @@
 # 读取5月1号问卷星数据
 
 import pandas as pd
-import coordTransform_utils as util
+from ..coord import coordTransform_utils as util
 
 
 ###############################################################################
