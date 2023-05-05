@@ -29,6 +29,7 @@ for index,row in df.iterrows():
 # names=list(set(map.values()))
 names=list(map.values())
 # print(names)
+names.sort()
 
 
 # 在打开文件时，指定编码方式为utf-8
