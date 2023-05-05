@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
 # 查重
+import sys
+sys.path.append("..")
 
 import pandas as pd
-from ..compare import dict_operation as dop
+from compare import dict_operation as dop
 
 
 path=r'C:\Users\sun\OneDrive\数字淄博\开发-淄博烧烤\20230505-数据\20230505-淄博本地生活数-3.xlsx'
